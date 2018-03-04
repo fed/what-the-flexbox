@@ -1,2 +1,3 @@
-# what-the-flexbox
-My take on Wes Bos' Flexbox course
+# What the Flexbox?!
+
+![WTF](https://i.imgur.com/4n3DeMi.png)
