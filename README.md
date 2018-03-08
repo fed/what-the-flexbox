@@ -18,7 +18,7 @@ items on the horizontal (main) axis are laid out from left to right
 
 When `flex-direction: row`, each flex item has its width determined by its own content (i.e. each flex item will be as wide as its content is). The height of each child, however, matches that of the container (each child stretches as high as the container). This is b/c by default `align-items: stretch` within `.container`.
 
-![](./screenshots/1.jpg)
+![](./screenshots/01.jpg)
 
 The above layout corresponds to the following styles:
 
@@ -32,7 +32,7 @@ The above layout corresponds to the following styles:
 
 When removing the fixed height, the container is as tall as its content (like a regular div):
 
-![](./screenshots/2.jpg)
+![](./screenshots/02.jpg)
 
 ## flex-direction: column
 
@@ -44,7 +44,7 @@ cross axis --> X from LEFT to RIGHT
 
 When `flex-direction: column`, each flex item has its height determined by its content whereas it will be as wide as the container element is. In this case, our `container` element will behave like a block element does.
 
-![](./screenshots/3.jpg)
+![](./screenshots/03.jpg)
 
 ```css
 .container {
@@ -63,14 +63,14 @@ flex-direction: row-reverse;
 main axis --> X from RIGHT to LEFT
 ```
 
-![](./screenshots/4.jpg)
+![](./screenshots/04.jpg)
 
 ```
 flex-direction: column-reverse;
 main axis --> Y from BOTTOM to TOP
 ```
 
-![](./screenshots/5.jpg)
+![](./screenshots/05.jpg)
 
 ## Setting the width of the flex items (children of container)
 
@@ -87,13 +87,13 @@ main axis --> Y from BOTTOM to TOP
 
 The nature of flexbox is that it's gonna try to work with the widths that you give it, but if it just doesn't work out it's gonna evenly distribute the available space.
 
-![](./screenshots/6.jpg)
+![](./screenshots/06.jpg)
 
 ^ Clearly the width of the screen is not 3000px (300px * 10 elements).
 
 ## Wrap
 
-![](./screenshots/7.jpg)
+![](./screenshots/07.jpg)
 
 ```css
 .container {
@@ -109,7 +109,7 @@ The nature of flexbox is that it's gonna try to work with the widths that you gi
 
 If we now set the container to `100vh` the remaining vertical space gets evenly distributed among the children (flex items). We are not giving each child a fixed height, it's being set automatically based on the container height.
 
-![](./screenshots/8.jpg)
+![](./screenshots/08.jpg)
 
 ```css
 .container {
@@ -126,7 +126,7 @@ If we now set the container to `100vh` the remaining vertical space gets evenly 
 
 ## Reversing the cross axis
 
-![](./screenshots/9.jpg)
+![](./screenshots/09.jpg)
 
 ```css
 .container {
@@ -145,13 +145,55 @@ For a `flex-direction: row`, setting `flex-wrap: wrap-reverse` makes the cross a
 
 My items are still starting at the left hand side, from left to right (b/c of `flex-direction: row`) but they start at the bottom and work their way up.
 
-## flex: 1
+## The `flex` property
 
 ![](./screenshots/10.jpg)
 
-Take all the space available and evenly distribute it among the flex items (children).
+The value `1` on `flex: 1` measures at what proportion should i scale up or down when we've got either extra space or not enough space.
 
-This property you set on the children, not on the container.
+If all children are set to `flex: 1` the **extra space** will be evenly distributed among the flex items (children).
+
+![](./screenshots/15.jpg)
+
+If there's one of those children set to `flex: 2` that means that particular child will take up twice as much **of the extra space** as its `flex: 1` counterparts.
+
+![](./screenshots/16.jpg)
+
+Or even half as much when `flex: 0.5`:
+
+![](./screenshots/17.jpg)
+
+Note that this property is set on the children, not on the container.
+
+## `flex: 1` is a shortcut
+
+```css
+flex-grow: 1
+```
+
+When we have extra space, how should we divide it amongst everybody on the same line?
+
+The higher the value, the wider the element gets.
+
+The default is `0`, meaning when there's extra room, don't do anything.
+
+```css
+flex-shrink: 1
+```
+
+When we have not enough space, how much of myself should I give up in proportion to the other elements on the same line?
+
+e.g. if `flex-shrink: 2` for a particular child, then that element is gonna shrink twice as much as its siblings when there's no enough room.
+
+The higher the value, the narrower the element gets.
+
+The default is `1` meaning when there's no enough room, just evenly resize the children to make them fit
+
+```
+flex-basis: auto
+```
+
+How big should our element be before we start growing or shrinking?
 
 ## Changing the order of the flex items
 
@@ -181,6 +223,10 @@ Particularly interesting use case: `align-items: baseline`
 
 ![](./screenshots/14.jpg)
 
+## align-self
+
+The align-self property overrides the flexible container's align-items property.
+
 ## Defaults:
 
 ```css
@@ -193,4 +239,8 @@ align-content: stretch;
 
 /* Children */
 order: 0;
+align-self: auto;
+flex-grow: 0;
+flex-shrink: 1;
+flex-basis: auto;
 ```
