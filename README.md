@@ -2,6 +2,25 @@
 
 ![WTF](https://i.imgur.com/4n3DeMi.png)
 
+## Creating a Flex container
+
+Given:
+
+```html
+<div class="container">
+  <div class="box box1">1</div>
+  <div class="box box2">2</div>
+  <div class="box box3">3</div>
+  <div class="box box4">4</div>
+  <div class="box box5">5</div>
+  <div class="box box6">6</div>
+  <div class="box box7">7</div>
+  <div class="box box8">8</div>
+  <div class="box box9">9</div>
+  <div class="box box10">10</div>
+</div>
+```
+
 By default, when the parent container is set to `display: flex`, each child gets turned into a flex item.
 
 We've got two axis: the main axis and the cross axis.
